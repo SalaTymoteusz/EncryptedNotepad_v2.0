@@ -16,6 +16,7 @@ class NoteViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("NoteView")
         print("NoteView")
+        print("You finished!")
     }
     
 
