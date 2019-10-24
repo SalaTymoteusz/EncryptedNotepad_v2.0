@@ -14,9 +14,13 @@
 		A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9063E4223620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld */; };
 		A9063E4623620387005CDEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4523620387005CDEDE /* Assets.xcassets */; };
 		A9063E4923620387005CDEDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4723620387005CDEDE /* LaunchScreen.storyboard */; };
+		DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23F4CB7DDC0E7D175B7BAD41 /* Pods-EncryptedNotepad_v2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EncryptedNotepad_v2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0.release.xcconfig"; sourceTree = "<group>"; };
+		3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EncryptedNotepad_v2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		912B8ECC968D26888CBC5F3C /* Pods-EncryptedNotepad_v2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EncryptedNotepad_v2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0.debug.xcconfig"; sourceTree = "<group>"; };
 		A9063E3623620386005CDEDE /* EncryptedNotepad_v2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EncryptedNotepad_v2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9063E3923620386005CDEDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9063E3B23620386005CDEDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10479C72C0E336A723491DD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A9063E2D23620386005CDEDE = {
 			isa = PBXGroup;
 			children = (
 				A9063E3823620386005CDEDE /* EncryptedNotepad_v2.0 */,
 				A9063E3723620386005CDEDE /* Products */,
+				F3E4AB353F498FCA758308F1 /* Pods */,
+				10479C72C0E336A723491DD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +85,15 @@
 			path = EncryptedNotepad_v2.0;
 			sourceTree = "<group>";
 		};
+		F3E4AB353F498FCA758308F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				912B8ECC968D26888CBC5F3C /* Pods-EncryptedNotepad_v2.0.debug.xcconfig */,
+				23F4CB7DDC0E7D175B7BAD41 /* Pods-EncryptedNotepad_v2.0.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9063E4D23620387005CDEDE /* Build configuration list for PBXNativeTarget "EncryptedNotepad_v2.0" */;
 			buildPhases = (
+				23022FEED327EBEC6AB489A6 /* [CP] Check Pods Manifest.lock */,
 				A9063E3223620386005CDEDE /* Sources */,
 				A9063E3323620386005CDEDE /* Frameworks */,
 				A9063E3423620386005CDEDE /* Resources */,
+				D412A86890278E7EE5388A7A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +161,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23022FEED327EBEC6AB489A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EncryptedNotepad_v2.0-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D412A86890278E7EE5388A7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9063E3223620386005CDEDE /* Sources */ = {
@@ -286,6 +359,7 @@
 		};
 		A9063E4E23620387005CDEDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 912B8ECC968D26888CBC5F3C /* Pods-EncryptedNotepad_v2.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +378,7 @@
 		};
 		A9063E4F23620387005CDEDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F4CB7DDC0E7D175B7BAD41 /* Pods-EncryptedNotepad_v2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
