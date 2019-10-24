@@ -14,6 +14,7 @@
 		A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9063E4223620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld */; };
 		A9063E4623620387005CDEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4523620387005CDEDE /* Assets.xcassets */; };
 		A9063E4923620387005CDEDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4723620387005CDEDE /* LaunchScreen.storyboard */; };
+		A9063E5123620D54005CDEDE /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9063E5023620D54005CDEDE /* NoteViewController.swift */; };
 		DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		A9063E4523620387005CDEDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9063E4823620387005CDEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9063E4A23620387005CDEDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9063E5023620D54005CDEDE /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				A9063E3923620386005CDEDE /* AppDelegate.swift */,
 				A9063E3B23620386005CDEDE /* SceneDelegate.swift */,
 				A9063E3D23620386005CDEDE /* ViewController.swift */,
+				A9063E5023620D54005CDEDE /* NoteViewController.swift */,
 				A9063E3F23620386005CDEDE /* Main.storyboard */,
 				A9063E4523620387005CDEDE /* Assets.xcassets */,
 				A9063E4723620387005CDEDE /* LaunchScreen.storyboard */,
@@ -217,6 +220,7 @@
 				A9063E3E23620386005CDEDE /* ViewController.swift in Sources */,
 				A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */,
 				A9063E3A23620386005CDEDE /* AppDelegate.swift in Sources */,
+				A9063E5123620D54005CDEDE /* NoteViewController.swift in Sources */,
 				A9063E3C23620386005CDEDE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
