@@ -19,17 +19,50 @@ class ViewController: UIViewController {
     
     let passCodeKeyData : [passCodeKeyStruct] =
         [passCodeKeyStruct(status: 0, title: "1", value: "1"),
-        passCodeKeyStruct(status: 0, title: "2", value: "1"),
-        passCodeKeyStruct(status: 0, title: "3", value: "1"),
-        passCodeKeyStruct(status: 0, title: "4", value: "1"),
-        passCodeKeyStruct(status: 0, title: "5", value: "1"),
-        passCodeKeyStruct(status: 0, title: "6", value: "1"),
-        passCodeKeyStruct(status: 0, title: "7", value: "1"),
-        passCodeKeyStruct(status: 0, title: "8", value: "1"),
-        passCodeKeyStruct(status: 0, title: "9", value: "1"),
-        passCodeKeyStruct(status: 1, title: "Clear", value: "1"),
-        passCodeKeyStruct(status: 0, title: "0", value: "1"),
-        passCodeKeyStruct(status: 1, title: "Delete", value: "1")]
+        passCodeKeyStruct(status: 0, title: "2", value: "2"),
+        passCodeKeyStruct(status: 0, title: "3", value: "3"),
+        passCodeKeyStruct(status: 0, title: "4", value: "4"),
+        passCodeKeyStruct(status: 0, title: "5", value: "5"),
+        passCodeKeyStruct(status: 0, title: "6", value: "6"),
+        passCodeKeyStruct(status: 0, title: "7", value: "7"),
+        passCodeKeyStruct(status: 0, title: "8", value: "8"),
+        passCodeKeyStruct(status: 0, title: "9", value: "9"),
+        passCodeKeyStruct(status: 1, title: "Clear", value: ""),
+        passCodeKeyStruct(status: 0, title: "0", value: "0"),
+        passCodeKeyStruct(status: 2, title: "Delete", value: "")]
+    
+    
+    @IBOutlet weak var keycode1: UIView!
+    @IBOutlet weak var keycode2: UIView!
+    @IBOutlet weak var keycode3: UIView!
+    @IBOutlet weak var keycode4: UIView!
+    
+    private func setupKeyCodeView() {
+        self.keycode1.layer.cornerRadius = 10
+        self.keycode1.layer.borderWidth = 1
+        self.keycode1.layer.borderColor = UIColor.black.cgColor
+        self.keycode1.backgroundColor = UIColor.clear
+        
+        self.keycode2.layer.cornerRadius = 10
+        self.keycode2.layer.borderWidth = 1
+        self.keycode2.layer.borderColor = UIColor.black.cgColor
+        self.keycode2.backgroundColor = UIColor.clear
+        
+        self.keycode3.layer.cornerRadius = 10
+        self.keycode3.layer.borderWidth = 1
+        self.keycode3.layer.borderColor = UIColor.black.cgColor
+        self.keycode3.backgroundColor = UIColor.clear
+        
+        self.keycode4.layer.cornerRadius = 10
+        self.keycode4.layer.borderWidth = 1
+        self.keycode4.layer.borderColor = UIColor.black.cgColor
+        self.keycode4.backgroundColor = UIColor.clear
+        
+        
+        
+        
+    }
+    
 
     
     let numberPadCollectionViewCell = "NumberPadCollectionViewCell"
@@ -51,7 +84,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupCollectionView()
-
+        self.setupKeyCodeView()
     }
 
 

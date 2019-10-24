@@ -10,10 +10,15 @@ import UIKit
 
 class NumberPadCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var keyView: UIView!
     @IBOutlet weak var keyLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        self.keyView.layer.cornerRadius = 36
+        self.keyView.layer.borderWidth = 2
+        self.keyView.layer.borderColor = UIColor.black.cgColor
+        
     }
     
     func setupCell(title: String) {

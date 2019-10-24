@@ -17,7 +17,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="His-aO-u92">
                                 <rect key="frame" x="87" y="328" width="240" height="320"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="Udw-Ui-LV3"/>
                                     <constraint firstAttribute="width" constant="240" id="xbP-tg-asz"/>
@@ -55,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="1BP-Sc-B1D"/>
                                     <constraint firstAttribute="width" constant="104" id="28F-Zc-uNN"/>
@@ -72,7 +72,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="His-aO-u92" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="40" id="8dE-Zc-rkX"/>
                             <constraint firstItem="His-aO-u92" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kj8-of-Wwq"/>
@@ -85,6 +85,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Passcode" id="lMX-e6-WUy"/>
                     <connections>
+                        <outlet property="keycode1" destination="xXo-qP-d4y" id="xz1-X6-zhk"/>
+                        <outlet property="keycode2" destination="thG-J9-LKc" id="pjr-Ku-M5r"/>
+                        <outlet property="keycode3" destination="2hI-up-YlE" id="d5R-HQ-jye"/>
+                        <outlet property="keycode4" destination="WDn-HQ-7Al" id="0pE-KY-pFV"/>
                         <outlet property="passCodeCollectionView" destination="His-aO-u92" id="vkV-n8-Tcz"/>
                     </connections>
                 </viewController>
