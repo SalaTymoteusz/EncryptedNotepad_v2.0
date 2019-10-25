@@ -33,6 +33,8 @@ class ViewController: UIViewController {
         passCodeKeyStruct(status: 2, title: "Edit", value: "")]
     
     var inputKeycode : [String] = []
+    var isEdit : Bool = false
+    var allowToEdit : Bool = false
     
     @IBOutlet weak var keycode1: UIView!
     @IBOutlet weak var keycode2: UIView!
@@ -110,6 +112,7 @@ class ViewController: UIViewController {
     }
     
     private func createCode() {
+        let _: Bool = KeychainWrapper.standard.removeObject(forKey: "code")
         let input = inputKeycode.joined(separator: "")
         let _: Bool = KeychainWrapper.standard.set(input, forKey: "code")
         infoLabel.text = "Enter code"
@@ -166,11 +169,40 @@ class ViewController: UIViewController {
             self.keycode3.backgroundColor = UIColor.lightGray
             self.keycode4.backgroundColor = UIColor.lightGray
             
-            if isCode() == true {
-                logIn()
+            if allowToEdit == true {
+                print("allow")
+                let input = inputKeycode.joined(separator: "")
+                let _: Bool = KeychainWrapper.standard.set(input, forKey: "code")
+                self.clearInputKeycodeView()
+                infoLabel.text = "Enter code"
+                allowToEdit = false
+                isEdit = false
             } else {
-                createCode()
+                
+                if isCode() == true {
+                    
+                    
+                    if isEdit == false {
+                        logIn()
+                    } else {
+                        print("cztery")
+                        let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
+                        let input = inputKeycode.joined(separator: "")
+                        if input == retrievedString {
+                            allowToEdit = true
+                            self.clearInputKeycodeView()
+                            infoLabel.text = "Setup new code"
+                            print(allowToEdit)
+                        }
+                    }
+                } else {
+                    createCode()
+                }
+                
             }
+            
+        
+            
             
             self.keycode1.backgroundColor = UIColor.clear
             self.keycode2.backgroundColor = UIColor.clear
@@ -249,9 +281,26 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
             }
             
             if data.status == 2 {
-                if self.inputKeycode.count > 0 {
-                    self.inputKeycode.remove(at: self.inputKeycode.count - 1)
-                    self.inputKeycodeAction()
+                if isCode() == true {
+                    isEdit = true
+                    infoLabel.text = "Enter the current code"
+                    
+//                    if self.inputKeycode.count == 4 {
+//                        print("cztery")
+//                        let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
+//                        let input = inputKeycode.joined(separator: "")
+//                        if input == retrievedString {
+//                            self.clearInputKeycodeView()
+//                            infoLabel.text = "Enter new code"
+//
+//                            if self.inputKeycode.count == 4 {
+//                                createCode()
+//                                print("code was created")
+//                                isEdit = false
+//                            }
+//                        }
+//
+//                    }
                 }
             }
         }
