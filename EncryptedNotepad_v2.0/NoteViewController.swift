@@ -8,26 +8,37 @@
 
 import UIKit
 
-class NoteViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print("NoteView")
-        print("NoteView")
-        print("You finished!")
-    }
+class NoteViewController: UIViewController, UITextViewDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textViewDidChange(_ textView: UITextView) {
+        //saving text
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save.txt")
+        print(path!)
+        do {
+             try textView.text.write(to: path!, atomically: true, encoding: .utf8)
+        } catch {
+            //exception
+        }
     }
-    */
+                
+    @IBOutlet weak var textView: UITextView!
+    
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            print("start")
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save.txt")
+            print(path!)
+            do {
+                let input = try String(contentsOf: path!)
+                textView.text = input
 
-}
+            } catch {
+                //exception
+            }
+            
+            // Do any additional setup after loading the view.
+        }
+
+    }
+

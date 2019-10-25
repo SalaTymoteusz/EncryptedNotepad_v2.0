@@ -122,6 +122,15 @@ class ViewController: UIViewController {
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
             self.keycode4.backgroundColor = UIColor.lightGray
+            navigatedToNote()
+            
+            self.keycode1.backgroundColor = UIColor.clear
+            self.keycode2.backgroundColor = UIColor.clear
+            self.keycode3.backgroundColor = UIColor.clear
+            self.keycode4.backgroundColor = UIColor.clear
+            inputKeycode.removeAll()
+            
+            
         }
         
         if self.inputKeycode.count > 4 {
@@ -131,6 +140,14 @@ class ViewController: UIViewController {
             self.keycode4.backgroundColor = UIColor.lightGray
         }
 
+    }
+    
+    private func navigatedToNote() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let mainNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "noteView") as? NoteViewController else {
+            return
+        }
+        present(mainNavigationVC, animated: true, completion: nil)
     }
 
 
