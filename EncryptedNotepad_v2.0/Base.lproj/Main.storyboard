@@ -85,6 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Passcode" id="lMX-e6-WUy"/>
                     <connections>
+                        <outlet property="infoLabel" destination="5dn-OZ-09T" id="LEp-H5-9Or"/>
                         <outlet property="keycode1" destination="xXo-qP-d4y" id="xz1-X6-zhk"/>
                         <outlet property="keycode2" destination="thG-J9-LKc" id="pjr-Ku-M5r"/>
                         <outlet property="keycode3" destination="2hI-up-YlE" id="d5R-HQ-jye"/>
@@ -105,19 +106,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="unq-Dg-sWE">
-                                <rect key="frame" x="20" y="152" width="374" height="518"/>
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="ycb-Tf-kGC" id="kXH-og-pxZ"/>
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.69015704314720816" green="0.40841689840902229" blue="0.66907750386022091" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Kqq-Tr-vB3"/>
                     </view>
                     <connections>
