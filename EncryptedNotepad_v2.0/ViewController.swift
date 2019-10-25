@@ -17,7 +17,7 @@ struct passCodeKeyStruct {
 
 class ViewController: UIViewController {
     
-    let passCodeKeyData : [passCodeKeyStruct] =
+    var passCodeKeyData : [passCodeKeyStruct] =
         [passCodeKeyStruct(status: 0, title: "1", value: "1"),
         passCodeKeyStruct(status: 0, title: "2", value: "2"),
         passCodeKeyStruct(status: 0, title: "3", value: "3"),
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         passCodeKeyStruct(status: 0, title: "0", value: "0"),
         passCodeKeyStruct(status: 2, title: "Delete", value: "")]
     
+    var inputKeycode : [String] = []
     
     @IBOutlet weak var keycode1: UIView!
     @IBOutlet weak var keycode2: UIView!
@@ -84,7 +85,40 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupCollectionView()
+        self.clearInputKeycodeView()
+
+    }
+    
+    func clearInputKeycodeView() {
+        
+        self.inputKeycode = []
         self.setupKeyCodeView()
+        
+    }
+    
+    func inputKeycodeAction() {
+        
+        self.setupKeyCodeView()
+        
+        switch self.inputKeycode.count {
+        case 1:
+            self.keycode1.backgroundColor = UIColor.lightGray
+        case 2:
+            self.keycode1.backgroundColor = UIColor.lightGray
+            self.keycode2.backgroundColor = UIColor.lightGray
+        case 3:
+            self.keycode1.backgroundColor = UIColor.lightGray
+            self.keycode2.backgroundColor = UIColor.lightGray
+            self.keycode3.backgroundColor = UIColor.lightGray
+        case 4:
+            self.keycode1.backgroundColor = UIColor.lightGray
+            self.keycode2.backgroundColor = UIColor.lightGray
+            self.keycode3.backgroundColor = UIColor.lightGray
+            self.keycode4.backgroundColor = UIColor.lightGray
+        default:
+            print("Bug in inputKeycodeAction")
+            
+        }
     }
 
 
@@ -121,5 +155,26 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
         let height = width
         
         return CGSize(width: width, height: height)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let data = self.passCodeKeyData[indexPath.row]
+        
+        switch data.status {
+        case 1:
+        print("Clear")
+        self.setupKeyCodeView()
+        case 2:
+            self.inputKeycode.remove(at: self.inputKeycode.count - 1)
+            self.inputKeycodeAction()
+        case 0:
+            self.inputKeycode.append(data.value)
+            self.inputKeycodeAction()
+        default:
+            print("Bug")
+            
+        }
     }
 }
