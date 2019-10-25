@@ -100,25 +100,37 @@ class ViewController: UIViewController {
         
         self.setupKeyCodeView()
         
-        switch self.inputKeycode.count {
-        case 1:
+        if self.inputKeycode.count == 1 {
             self.keycode1.backgroundColor = UIColor.lightGray
-        case 2:
+        }
+        
+        if self.inputKeycode.count == 2 {
             self.keycode1.backgroundColor = UIColor.lightGray
             self.keycode2.backgroundColor = UIColor.lightGray
-        case 3:
+        }
+        
+        if self.inputKeycode.count == 3 {
             self.keycode1.backgroundColor = UIColor.lightGray
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
-        case 4:
+        }
+  
+  
+  
+        if self.inputKeycode.count == 4 {
             self.keycode1.backgroundColor = UIColor.lightGray
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
             self.keycode4.backgroundColor = UIColor.lightGray
-        default:
-            print("Bug in inputKeycodeAction")
-            
         }
+        
+        if self.inputKeycode.count > 4 {
+            self.keycode1.backgroundColor = UIColor.lightGray
+            self.keycode2.backgroundColor = UIColor.lightGray
+            self.keycode3.backgroundColor = UIColor.lightGray
+            self.keycode4.backgroundColor = UIColor.lightGray
+        }
+
     }
 
 
@@ -162,19 +174,22 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
         
         let data = self.passCodeKeyData[indexPath.row]
         
-        switch data.status {
-        case 1:
-        print("Clear")
-        self.setupKeyCodeView()
-        case 2:
-            self.inputKeycode.remove(at: self.inputKeycode.count - 1)
-            self.inputKeycodeAction()
-        case 0:
+        if data.status == 0 {
             self.inputKeycode.append(data.value)
             self.inputKeycodeAction()
-        default:
-            print("Bug")
             
+        } else {
+            if data.status == 1 {
+                self.clearInputKeycodeView()
+            }
+            
+            if data.status == 2 {
+                if self.inputKeycode.count > 0 {
+                    self.inputKeycode.remove(at: self.inputKeycode.count - 1)
+                    self.inputKeycodeAction()
+                }
+            }
         }
+        
     }
 }
