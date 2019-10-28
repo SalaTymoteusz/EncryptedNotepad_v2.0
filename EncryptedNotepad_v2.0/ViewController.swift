@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import AVFoundation
 
 struct passCodeKeyStruct {
     var status : Int
@@ -88,9 +89,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // let _: Bool = KeychainWrapper.standard.set("1111", forKey: "code")
 
-        let removeSuccessful: Bool = KeychainWrapper.standard.removeObject(forKey: "code")
         let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
 
         self.setupCollectionView()
@@ -138,6 +137,8 @@ class ViewController: UIViewController {
             if input == retrievedString {
                 print(inputKeycode)
                 navigatedToNote()
+            } else {
+                UIDevice.vibrate()
             }
         }
     }
@@ -168,6 +169,7 @@ class ViewController: UIViewController {
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
             self.keycode4.backgroundColor = UIColor.lightGray
+            sleep(1)
             
             if allowToEdit == true {
                 print("allow")
@@ -233,6 +235,12 @@ class ViewController: UIViewController {
 
 }
 
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+}
+
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -285,22 +293,6 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
                     isEdit = true
                     infoLabel.text = "Enter the current code"
                     
-//                    if self.inputKeycode.count == 4 {
-//                        print("cztery")
-//                        let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
-//                        let input = inputKeycode.joined(separator: "")
-//                        if input == retrievedString {
-//                            self.clearInputKeycodeView()
-//                            infoLabel.text = "Enter new code"
-//
-//                            if self.inputKeycode.count == 4 {
-//                                createCode()
-//                                print("code was created")
-//                                isEdit = false
-//                            }
-//                        }
-//
-//                    }
                 }
             }
         }
