@@ -26,8 +26,21 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            if let filepath = Bundle.main.path(forResource: "Documents.save2", ofType: "txt") {
+                do {
+                    let contents = try String(contentsOfFile: filepath)
+                    print(contents)
+                } catch {
+                    // contents could not be loaded
+                }
+            } else {
+                // example.txt not found!
+            }
+            
+            
             print("start")
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save.txt")
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save2.txt")
             print(path!)
             do {
                 let input = try String(contentsOf: path!)

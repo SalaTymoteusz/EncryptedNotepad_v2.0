@@ -137,6 +137,8 @@ class ViewController: UIViewController {
             if input == retrievedString {
                 print(inputKeycode)
                 navigatedToNote()
+
+                
             } else {
                 UIDevice.vibrate()
             }
@@ -160,16 +162,15 @@ class ViewController: UIViewController {
             self.keycode1.backgroundColor = UIColor.lightGray
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
+
         }
-  
-  
-  
+        
         if self.inputKeycode.count == 4 {
+
             self.keycode1.backgroundColor = UIColor.lightGray
             self.keycode2.backgroundColor = UIColor.lightGray
             self.keycode3.backgroundColor = UIColor.lightGray
             self.keycode4.backgroundColor = UIColor.lightGray
-            sleep(1)
             
             if allowToEdit == true {
                 print("allow")
@@ -180,10 +181,10 @@ class ViewController: UIViewController {
                 allowToEdit = false
                 isEdit = false
             } else {
-                
+
                 if isCode() == true {
-                    
-                    
+
+
                     if isEdit == false {
                         logIn()
                     } else {
@@ -200,27 +201,21 @@ class ViewController: UIViewController {
                 } else {
                     createCode()
                 }
-                
+
             }
             
-        
-            
-            
-            self.keycode1.backgroundColor = UIColor.clear
-            self.keycode2.backgroundColor = UIColor.clear
-            self.keycode3.backgroundColor = UIColor.clear
-            self.keycode4.backgroundColor = UIColor.clear
+            let seconds = 0.25
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.keycode1.backgroundColor = UIColor.clear
+                self.keycode2.backgroundColor = UIColor.clear
+                self.keycode3.backgroundColor = UIColor.clear
+                self.keycode4.backgroundColor = UIColor.clear
+            }
             inputKeycode.removeAll()
             
             
         }
         
-        if self.inputKeycode.count > 4 {
-            self.keycode1.backgroundColor = UIColor.lightGray
-            self.keycode2.backgroundColor = UIColor.lightGray
-            self.keycode3.backgroundColor = UIColor.lightGray
-            self.keycode4.backgroundColor = UIColor.lightGray
-        }
 
     }
     
