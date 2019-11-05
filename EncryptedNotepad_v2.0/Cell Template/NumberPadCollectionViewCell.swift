@@ -18,6 +18,8 @@ class NumberPadCollectionViewCell: UICollectionViewCell {
         self.keyView.layer.cornerRadius = 36
         self.keyView.layer.borderWidth = 2
         self.keyView.layer.borderColor = UIColor.black.cgColor
+        self.keyView.layer.backgroundColor = UIColor.white.cgColor
+        self.keyLabel.textColor = UIColor.black
         
     }
     

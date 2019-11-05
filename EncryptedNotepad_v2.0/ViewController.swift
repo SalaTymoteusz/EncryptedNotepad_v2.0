@@ -204,7 +204,7 @@ class ViewController: UIViewController {
 
             }
             
-            let seconds = 0.25
+            let seconds = 0.5
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 self.keycode1.backgroundColor = UIColor.clear
                 self.keycode2.backgroundColor = UIColor.clear

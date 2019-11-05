@@ -14,10 +14,10 @@ class TextPadCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
     
     func setupCell(title: String) {
-        
         self.keyLabel.text = title
     }
 }

@@ -13,7 +13,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         //saving text
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save.txt")
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save3.txt")
         print(path!)
         do {
              try textView.text.write(to: path!, atomically: true, encoding: .utf8)
@@ -27,7 +27,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            if let filepath = Bundle.main.path(forResource: "Documents.save2", ofType: "txt") {
+            if let filepath = Bundle.main.path(forResource: "save3", ofType: "txt") {
                 do {
                     let contents = try String(contentsOfFile: filepath)
                     print(contents)
@@ -40,7 +40,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
             
             
             print("start")
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save2.txt")
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save3.txt")
             print(path!)
             do {
                 let input = try String(contentsOf: path!)
