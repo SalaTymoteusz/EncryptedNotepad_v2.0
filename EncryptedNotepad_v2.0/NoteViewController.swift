@@ -10,15 +10,15 @@ import UIKit
 
 class NoteViewController: UIViewController, UITextViewDelegate {
     
-    
     func textViewDidChange(_ textView: UITextView) {
         //saving text
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save3.txt")
-        print(path!)
-        do {
-             try textView.text.write(to: path!, atomically: true, encoding: .utf8)
-        } catch {
-            //exception
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("saving.txt")
+        print(path)
+        
+        do{
+            try textView.text.write(to: path!, atomically: true, encoding: .utf8)
+        }catch{
+            //correct this exception?
         }
     }
                 
@@ -27,31 +27,20 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            if let filepath = Bundle.main.path(forResource: "save3", ofType: "txt") {
-                do {
-                    let contents = try String(contentsOfFile: filepath)
-                    print(contents)
-                } catch {
-                    // contents could not be loaded
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("saving.txt")
+                    
+                    do{
+                    let input = try String(contentsOf: path!)
+                        textView.text = input
+                    }catch{
+                        
+                    }
                 }
-            } else {
-                // example.txt not found!
+
+                override func didReceiveMemoryWarning() {
+                    super.didReceiveMemoryWarning()
+                    // Dispose of any resources that can be recreated.
+                }
+
+
             }
-            
-            
-            print("start")
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("save3.txt")
-            print(path!)
-            do {
-                let input = try String(contentsOf: path!)
-                textView.text = input
-
-            } catch {
-                //exception
-            }
-            
-            // Do any additional setup after loading the view.
-        }
-
-    }
-
