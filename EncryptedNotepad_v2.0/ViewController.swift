@@ -38,19 +38,25 @@ class ViewController: UIViewController {
     
     
     
-    var inputKeycode : [String] = []
-    var isEdit : Bool = false
-    var allowToEdit : Bool = false
-    var delayDate : Date = Date()
-    var counterOfWrongAnswer : Int = 0
+    var inputKeycode : [String] = [] // array for code
+    var isEdit : Bool = false   // true when the user tries to change the password and provides the correct current password
+    
+    var allowToEdit : Bool = false // variable = true when user taped 'Edit' button
+    var delayDate : Date = Date() // variable declaration date of login attempt again
+    var counterOfWrongAnswer : Int = 0 // variable declaration counter of wrong answer
 
     
+    // UIView of all four password dots
     @IBOutlet weak var keycode1: UIView!
     @IBOutlet weak var keycode2: UIView!
     @IBOutlet weak var keycode3: UIView!
     @IBOutlet weak var keycode4: UIView!
+    
+    // infoLabel is label above dots, showing actual informations for user
     @IBOutlet weak var infoLabel: UILabel!
     
+    
+    // function set up view of dots
     private func setupKeyCodeView() {
         self.keycode1.layer.cornerRadius = 10
         self.keycode1.layer.borderWidth = 1
@@ -71,17 +77,16 @@ class ViewController: UIViewController {
         self.keycode4.layer.borderWidth = 1
         self.keycode4.layer.borderColor = UIColor.black.cgColor
         self.keycode4.backgroundColor = UIColor.clear
-        
-        
-        
-        
     }
     
 
     
     let numberPadCollectionViewCell = "NumberPadCollectionViewCell"
     let textPadCollectionViewCell = "TextPadCollectionViewCell"
+    
     @IBOutlet weak var passCodeCollectionView: UICollectionView!
+    
+    
     private func setupCollectionView() {
         self.passCodeCollectionView.register(UINib(nibName: self.numberPadCollectionViewCell, bundle: nil),  forCellWithReuseIdentifier: self.numberPadCollectionViewCell)
         
@@ -89,49 +94,36 @@ class ViewController: UIViewController {
         
         self.passCodeCollectionView.dataSource = self
         self.passCodeCollectionView.delegate = self
-        
     }
     
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //saveNewDelayDate(delayDate: Date(), time: 0)
-        //saveCounterValue(counterValue: 0)
         
         self.setupCollectionView()
         self.clearInputKeycodeView()
         
+        // if code wasn't created, setup delay date and counter value
         if isCode() == false {
             saveNewDelayDate(delayDate: Date(), time: 0)
             saveCounterValue(counterValue: 0)
         }
         
+        // setup delay date
         delayDate = loadDelayDate()
+        
+        // setup counter of wrong answer
         counterOfWrongAnswer = loadCounterValue()
         
         
-        
+        // After run, check if the user has blocked the application after too many incorrectly entered codes
         if compareDates(delayDate: delayDate) == false {
             infoLabel.text = "Wait till: \(dateToString(date: delayDate))"
             infoLabel.textColor = UIColor.red
-            
         }else {
-            
             let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
-            
+    
             if retrievedString != nil {
                 infoLabel.text = "Enter code"
                 infoLabel.textColor = UIColor.black
@@ -140,22 +132,16 @@ class ViewController: UIViewController {
                 infoLabel.text = "Enter new code"
                 infoLabel.textColor = UIColor.black
             }
-            
         }
-
-        
-
     }
     
     
-
     func clearInputKeycodeView() {
-        
         self.inputKeycode = []
         self.setupKeyCodeView()
-        
     }
-    //tworzenie kodu, dodawanie go do KeyChain
+    
+    // create code and add it to KeyChain
     private func createCode() {
         let _: Bool = KeychainWrapper.standard.removeObject(forKey: "code")
         let input = inputKeycode.joined(separator: "")
@@ -164,18 +150,17 @@ class ViewController: UIViewController {
         infoLabel.textColor = UIColor.black
     }
     
-    //funkcja sprawdzająca czy użytkownik posiada już ustawione hasło
+    // check if user have a set password
     private func isCode() -> (Bool) {
         let retrievedString: String? = KeychainWrapper.standard.string(forKey: "code")
         if retrievedString == nil {
             return false
-            
         } else {
             return true
         }
-        
     }
     
+    // it starts after enter correct password
     private func logIn() {
         infoLabel.text = "Enter code"
         infoLabel.textColor = UIColor.black
@@ -207,8 +192,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
- 
+    // what is going after enter 1-4 code char
     func inputKeycodeAction() {
 
         self.setupKeyCodeView()
@@ -247,10 +231,7 @@ class ViewController: UIViewController {
                     allowToEdit = false
                     isEdit = false
                 } else {
-
                     if isCode() == true {
-
-
                         if isEdit == false {
                             logIn()
                         } else {
@@ -261,36 +242,30 @@ class ViewController: UIViewController {
                                 self.clearInputKeycodeView()
                                 infoLabel.text = "Setup new code"
                                 infoLabel.textColor = UIColor.black
-                                print(allowToEdit)
                                 counterOfWrongAnswer = 0
                                 saveCounterValue(counterValue: counterOfWrongAnswer)
-                            } else {
-                                UIDevice.vibrate()
-                                counterOfWrongAnswer += 1
+                                } else {
+                                    UIDevice.vibrate()
+                                    counterOfWrongAnswer += 1
+                                    saveCounterValue(counterValue: counterOfWrongAnswer)
                                 
-                                saveCounterValue(counterValue: counterOfWrongAnswer)
-                                
-                                if counterOfWrongAnswer % 5 == 0 {
-                                    saveNewDelayDate(delayDate: Date(), time: 60)
-                                    infoLabel.text = "Wait till: \(dateToString(date: loadDelayDate()))"
-                                    infoLabel.textColor = UIColor.red
+                                    if counterOfWrongAnswer % 5 == 0 {
+                                        saveNewDelayDate(delayDate: Date(), time: 60)
+                                        infoLabel.text = "Wait till: \(dateToString(date: loadDelayDate()))"
+                                        infoLabel.textColor = UIColor.red
+                                    }
                                 }
-                                
-                                
-                                
                             }
-                        }
+                        
                     } else {
                         createCode()
                     }
-
                 }
             } else {
-                    infoLabel.text = "Wait till: \(dateToString(date: loadDelayDate()))"
-                    infoLabel.textColor = UIColor.red
+                infoLabel.text = "Wait till: \(dateToString(date: loadDelayDate()))"
+                infoLabel.textColor = UIColor.red
             }
-
-
+            
             let seconds = 0.5
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 self.keycode1.backgroundColor = UIColor.clear
@@ -299,13 +274,10 @@ class ViewController: UIViewController {
                 self.keycode4.backgroundColor = UIColor.clear
             }
             inputKeycode.removeAll()
-
-
         }
-
-
     }
     
+    // it change VC
     private func navigatedToNote() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let mainNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "noteView") as? NoteViewController else {
@@ -313,10 +285,65 @@ class ViewController: UIViewController {
         }
         present(mainNavigationVC, animated: true, completion: nil)
     }
+    
+    // function return date in String
+    func dateToString(date : Date) -> String {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate : String = format.string(from: date)
+        return formattedDate
+    }
+    
+    // load delayDate from KeyChain
+    func loadDelayDate() -> Date{
+        let retrievedString: String? = KeychainWrapper.standard.string(forKey: "delayDate")
+        
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let delayDate = format.date(from: retrievedString!)!
 
+        return delayDate
+    }
+    
+    // save delayDate to KeyChain
+    func saveNewDelayDate(delayDate : Date, time : Double){
+        let newDate = delayDate.addingTimeInterval(time)
+        
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let formattedDate : String = format.string(from: newDate)
+        
+        let _: Bool = KeychainWrapper.standard.set(formattedDate, forKey: "delayDate")
+    }
+    
+    // Check if user have to wait to enter passwrd
+    func compareDates(delayDate : Date) -> Bool {
+        let currentDate = Date()
+        let delayDate = loadDelayDate()
+        
+        if currentDate >= delayDate {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    // load counter value from KeyChain
+    func loadCounterValue() -> Int {
+        let retrievedCounter: Int? = KeychainWrapper.standard.integer(forKey: "counter")
+    
+        return retrievedCounter!
+    }
+    
+    // save counter value to keyChain
+    func saveCounterValue(counterValue: Int) {
+        let _: Bool = KeychainWrapper.standard.set(counterValue, forKey: "counter")
+    }
 
 }
 
+
+// added a feature that causes device vibration
 extension UIDevice {
     static func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -359,17 +386,21 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        // last pressed key
         let data = self.passCodeKeyData[indexPath.row]
 
+        // data status = 0 when user tapped one of keys from keyboard
         if data.status == 0 {
             self.inputKeycode.append(data.value)
             self.inputKeycodeAction()
             
         } else {
+            // data status = 1 when user tapped Clear button
             if data.status == 1 {
                 self.clearInputKeycodeView()
             }
             
+            // data status = 2 when user taped Edit button
             if data.status == 2 {
                 if compareDates(delayDate: loadDelayDate()) != true {
                     infoLabel.text = "Wait till: \(dateToString(date: loadDelayDate()))"
@@ -387,59 +418,4 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
             }
         }
     }
-    
-    func dateToString(date : Date) -> String {
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        let formattedDate : String = format.string(from: date)
-        return formattedDate
-    }
-    
-    
-    func loadDelayDate() -> Date{
-        let retrievedString: String? = KeychainWrapper.standard.string(forKey: "delayDate")
-        //let retrievedString = "2019-11-06 14:46:05 +0000"
-        
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let delayDate = format.date(from: retrievedString!)!
-
-        return delayDate
-    }
-    
-    func saveNewDelayDate(delayDate : Date, time : Double){
-        let newDate = delayDate.addingTimeInterval(time)
-        
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let formattedDate : String = format.string(from: newDate)
-        
-        let _: Bool = KeychainWrapper.standard.set(formattedDate, forKey: "delayDate")
-    }
-    
-    
-    func compareDates(delayDate : Date) -> Bool {
-        let currentDate = Date()
-        let delayDate = loadDelayDate()
-        
-        if currentDate >= delayDate {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func loadCounterValue() -> Int {
-        let retrievedCounter: Int? = KeychainWrapper.standard.integer(forKey: "counter")
-        
-        return retrievedCounter!
-    }
-    
-    func saveCounterValue(counterValue: Int) {
-
-        let _: Bool = KeychainWrapper.standard.set(counterValue, forKey: "counter")
-    }
-    
-    
-    
 }

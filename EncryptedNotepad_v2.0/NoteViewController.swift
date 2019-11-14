@@ -13,8 +13,6 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         //saving text
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("saving.txt")
-        print(path)
-        
         do{
             try textView.text.write(to: path!, atomically: true, encoding: .utf8)
         }catch{
@@ -39,7 +37,6 @@ class NoteViewController: UIViewController, UITextViewDelegate {
 
                 override func didReceiveMemoryWarning() {
                     super.didReceiveMemoryWarning()
-                    // Dispose of any resources that can be recreated.
                 }
 
 
