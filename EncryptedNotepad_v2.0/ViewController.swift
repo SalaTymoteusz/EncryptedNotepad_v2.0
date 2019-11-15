@@ -100,7 +100,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        print("xxxxxxxxxxxxxxxxx")
         self.setupCollectionView()
         self.clearInputKeycodeView()
         
@@ -283,6 +283,7 @@ class ViewController: UIViewController {
         guard let mainNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "noteView") as? NoteViewController else {
             return
         }
+        mainNavigationVC.modalPresentationStyle = .fullScreen
         present(mainNavigationVC, animated: true, completion: nil)
     }
     
