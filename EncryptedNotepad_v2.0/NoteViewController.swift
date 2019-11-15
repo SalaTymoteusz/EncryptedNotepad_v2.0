@@ -19,11 +19,39 @@ class NoteViewController: UIViewController, UITextViewDelegate {
             //correct this exception?
         }
     }
+    
+    func setLogoutButton() {
+        logout.layer.cornerRadius = 25
+        logout.layer.borderWidth = 2
+        logout.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    // it change VC
+    private func navigatedToCodeVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let mainNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "codeView") as? ViewController else {
+            return
+        }
+        mainNavigationVC.modalPresentationStyle = .fullScreen
+        present(mainNavigationVC, animated: true, completion: nil)
+    }
                 
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var logout: UIButton!
+    @IBAction func logoutTapped(_ sender: Any) {
+        navigatedToCodeVC()
+    }
     
+    @objc func dismissKeyboard() {
+      view.endEditing(true)
+    }
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            setLogoutButton()
+            
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+            view.addGestureRecognizer(tap)
             
             let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("saving.txt")
                     

@@ -10,7 +10,7 @@
         <!--Passcode-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EncryptedNotepad_v2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="codeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="EncryptedNotepad_v2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,9 +105,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="unq-Dg-sWE">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="unq-Dg-sWE">
+                                <rect key="frame" x="20" y="44" width="374" height="683"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -116,11 +115,35 @@
                                     <outlet property="delegate" destination="ycb-Tf-kGC" id="kXH-og-pxZ"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-TS-Kbl">
+                                <rect key="frame" x="20" y="760" width="374" height="74"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="2d3-Ma-SXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="ycb-Tf-kGC" eventType="touchUpInside" id="1wi-eT-kBH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="unq-Dg-sWE" firstAttribute="trailing" secondItem="hUh-mu-pXb" secondAttribute="trailingMargin" id="3Zh-sZ-BcO"/>
+                            <constraint firstItem="unq-Dg-sWE" firstAttribute="leading" secondItem="hUh-mu-pXb" secondAttribute="leadingMargin" id="F8T-Ee-g11"/>
+                            <constraint firstItem="unq-Dg-sWE" firstAttribute="top" secondItem="Kqq-Tr-vB3" secondAttribute="top" id="FHb-5H-kqj"/>
+                            <constraint firstItem="xdB-TS-Kbl" firstAttribute="top" secondItem="unq-Dg-sWE" secondAttribute="bottom" constant="33" id="S5H-ri-y1y"/>
+                            <constraint firstItem="unq-Dg-sWE" firstAttribute="leading" secondItem="xdB-TS-Kbl" secondAttribute="leading" id="hny-Az-tlF"/>
+                            <constraint firstItem="Kqq-Tr-vB3" firstAttribute="bottom" secondItem="xdB-TS-Kbl" secondAttribute="bottom" constant="28" id="t4G-bC-7Qq"/>
+                            <constraint firstItem="unq-Dg-sWE" firstAttribute="trailing" secondItem="xdB-TS-Kbl" secondAttribute="trailing" id="zLl-Vp-4Ew"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Kqq-Tr-vB3"/>
                     </view>
                     <connections>
+                        <outlet property="logout" destination="xdB-TS-Kbl" id="eSA-sT-Znn"/>
                         <outlet property="textView" destination="unq-Dg-sWE" id="1TI-0O-Yrt"/>
                     </connections>
                 </viewController>
