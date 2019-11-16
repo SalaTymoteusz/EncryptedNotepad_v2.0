@@ -15,6 +15,10 @@
 		A9063E4623620387005CDEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4523620387005CDEDE /* Assets.xcassets */; };
 		A9063E4923620387005CDEDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9063E4723620387005CDEDE /* LaunchScreen.storyboard */; };
 		A9063E5123620D54005CDEDE /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9063E5023620D54005CDEDE /* NoteViewController.swift */; };
+		A9063E5523623F55005CDEDE /* NumberPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9063E5323623F55005CDEDE /* NumberPadCollectionViewCell.swift */; };
+		A9063E5623623F55005CDEDE /* NumberPadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9063E5423623F55005CDEDE /* NumberPadCollectionViewCell.xib */; };
+		A9063E5923623FC6005CDEDE /* TextPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9063E5723623FC6005CDEDE /* TextPadCollectionViewCell.swift */; };
+		A9063E5A23623FC6005CDEDE /* TextPadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */; };
 		DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +26,7 @@
 		23F4CB7DDC0E7D175B7BAD41 /* Pods-EncryptedNotepad_v2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EncryptedNotepad_v2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0.release.xcconfig"; sourceTree = "<group>"; };
 		3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EncryptedNotepad_v2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		912B8ECC968D26888CBC5F3C /* Pods-EncryptedNotepad_v2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EncryptedNotepad_v2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0.debug.xcconfig"; sourceTree = "<group>"; };
-		A9063E3623620386005CDEDE /* EncryptedNotepad_v2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EncryptedNotepad_v2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9063E3623620386005CDEDE /* CryptoNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9063E3923620386005CDEDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9063E3B23620386005CDEDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A9063E3D23620386005CDEDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +36,10 @@
 		A9063E4823620387005CDEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9063E4A23620387005CDEDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9063E5023620D54005CDEDE /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		A9063E5323623F55005CDEDE /* NumberPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9063E5423623F55005CDEDE /* NumberPadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberPadCollectionViewCell.xib; sourceTree = "<group>"; };
+		A9063E5723623FC6005CDEDE /* TextPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPadCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPadCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +75,7 @@
 		A9063E3723620386005CDEDE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9063E3623620386005CDEDE /* EncryptedNotepad_v2.0.app */,
+				A9063E3623620386005CDEDE /* CryptoNote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +83,7 @@
 		A9063E3823620386005CDEDE /* EncryptedNotepad_v2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				A9063E5223623ECF005CDEDE /* Cell Template */,
 				A9063E3923620386005CDEDE /* AppDelegate.swift */,
 				A9063E3B23620386005CDEDE /* SceneDelegate.swift */,
 				A9063E3D23620386005CDEDE /* ViewController.swift */,
@@ -86,6 +95,17 @@
 				A9063E4223620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld */,
 			);
 			path = EncryptedNotepad_v2.0;
+			sourceTree = "<group>";
+		};
+		A9063E5223623ECF005CDEDE /* Cell Template */ = {
+			isa = PBXGroup;
+			children = (
+				A9063E5323623F55005CDEDE /* NumberPadCollectionViewCell.swift */,
+				A9063E5423623F55005CDEDE /* NumberPadCollectionViewCell.xib */,
+				A9063E5723623FC6005CDEDE /* TextPadCollectionViewCell.swift */,
+				A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */,
+			);
+			path = "Cell Template";
 			sourceTree = "<group>";
 		};
 		F3E4AB353F498FCA758308F1 /* Pods */ = {
@@ -116,7 +136,7 @@
 			);
 			name = EncryptedNotepad_v2.0;
 			productName = EncryptedNotepad_v2.0;
-			productReference = A9063E3623620386005CDEDE /* EncryptedNotepad_v2.0.app */;
+			productReference = A9063E3623620386005CDEDE /* CryptoNote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,6 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9063E4923620387005CDEDE /* LaunchScreen.storyboard in Resources */,
+				A9063E5A23623FC6005CDEDE /* TextPadCollectionViewCell.xib in Resources */,
+				A9063E5623623F55005CDEDE /* NumberPadCollectionViewCell.xib in Resources */,
 				A9063E4623620387005CDEDE /* Assets.xcassets in Resources */,
 				A9063E4123620386005CDEDE /* Main.storyboard in Resources */,
 			);
@@ -220,6 +242,8 @@
 				A9063E3E23620386005CDEDE /* ViewController.swift in Sources */,
 				A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */,
 				A9063E3A23620386005CDEDE /* AppDelegate.swift in Sources */,
+				A9063E5923623FC6005CDEDE /* TextPadCollectionViewCell.swift in Sources */,
+				A9063E5523623F55005CDEDE /* NumberPadCollectionViewCell.swift in Sources */,
 				A9063E5123620D54005CDEDE /* NoteViewController.swift in Sources */,
 				A9063E3C23620386005CDEDE /* SceneDelegate.swift in Sources */,
 			);
@@ -369,12 +393,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWAUR4MVN4;
 				INFOPLIST_FILE = EncryptedNotepad_v2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "PPR.EncryptedNotepad-v2-0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CryptoNote;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -388,12 +413,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWAUR4MVN4;
 				INFOPLIST_FILE = EncryptedNotepad_v2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "PPR.EncryptedNotepad-v2-0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CryptoNote;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
