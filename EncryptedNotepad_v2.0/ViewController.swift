@@ -9,6 +9,7 @@
 import UIKit
 import SwiftKeychainWrapper
 import AVFoundation
+import CommonCrypto
 
 
 
@@ -99,8 +100,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("xxxxxxxxxxxxxxxxx")
+        
         self.setupCollectionView()
         self.clearInputKeycodeView()
         
@@ -171,7 +171,6 @@ class ViewController: UIViewController {
         } else {
             let input = inputKeycode.joined(separator: "")
             if input == retrievedString {
-                print(inputKeycode)
                 navigatedToNote()
                 counterOfWrongAnswer = 0
                 saveCounterValue(counterValue: counterOfWrongAnswer)

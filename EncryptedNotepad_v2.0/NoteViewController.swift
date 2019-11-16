@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CommonCrypto
+import SwiftKeychainWrapper
+
 
 class NoteViewController: UIViewController, UITextViewDelegate {
     
@@ -34,6 +37,33 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         }
         mainNavigationVC.modalPresentationStyle = .fullScreen
         present(mainNavigationVC, animated: true, completion: nil)
+        
+        hashText()
+    }
+    
+    func hashText() {
+        
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("saving.txt")
+        do{
+            let text = textView.text
+            let encryptedText = text!.aesEncrypt(key: saveKey(), iv: "utf-8")
+            try encryptedText!.write(to: path!, atomically: true, encoding: .utf8)
+        }catch{
+            
+        }
+    }
+    
+    func saveKey() -> String{
+        let key = UUID().uuidString
+        let _: Bool = KeychainWrapper.standard.set(key, forKey: "key")
+        
+        return key
+    }
+    
+    func loadKey() -> String? {
+        let key: String? = KeychainWrapper.standard.string(forKey: "key")
+    
+        return key!
     }
                 
     @IBOutlet weak var textView: UITextView!
@@ -45,10 +75,16 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     @objc func dismissKeyboard() {
       view.endEditing(true)
     }
+    
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             
             setLogoutButton()
+            
+            if loadKey() == nil {
+                saveKey()
+            }
             
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
             view.addGestureRecognizer(tap)
@@ -57,7 +93,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
                     
                     do{
                     let input = try String(contentsOf: path!)
-                        textView.text = input
+                        textView.text = input.aesDecrypt(key: loadKey()!, iv: "utf-8")
                     }catch{
                         
                     }
@@ -69,3 +105,79 @@ class NoteViewController: UIViewController, UITextViewDelegate {
 
 
             }
+
+public extension String {
+
+    func aesEncrypt(key:String, iv:String, options:Int = kCCOptionPKCS7Padding) -> String? {
+        if let keyData = key.data(using: String.Encoding.utf8),
+            let data = self.data(using: String.Encoding.utf8),
+            let cryptData    = NSMutableData(length: Int((data.count)) + kCCBlockSizeAES128) {
+
+
+            let keyLength              = size_t(kCCKeySizeAES128)
+            let operation: CCOperation = UInt32(kCCEncrypt)
+            let algoritm:  CCAlgorithm = UInt32(kCCAlgorithmAES128)
+            let options:   CCOptions   = UInt32(options)
+
+
+
+            var numBytesEncrypted :size_t = 0
+
+            let cryptStatus = CCCrypt(operation,
+                                      algoritm,
+                                      options,
+                                      (keyData as NSData).bytes, keyLength,
+                                      iv,
+                                      (data as NSData).bytes, data.count,
+                                      cryptData.mutableBytes, cryptData.length,
+                                      &numBytesEncrypted)
+
+            if UInt32(cryptStatus) == UInt32(kCCSuccess) {
+                cryptData.length = Int(numBytesEncrypted)
+                let base64cryptString = cryptData.base64EncodedString(options: .lineLength64Characters)
+                return base64cryptString
+
+
+            }
+            else {
+                return nil
+            }
+        }
+        return nil
+    }
+
+    func aesDecrypt(key:String, iv:String, options:Int = kCCOptionPKCS7Padding) -> String? {
+        if let keyData = key.data(using: String.Encoding.utf8),
+            let data = NSData(base64Encoded: self, options: .ignoreUnknownCharacters),
+            let cryptData    = NSMutableData(length: Int((data.length)) + kCCBlockSizeAES128) {
+
+            let keyLength              = size_t(kCCKeySizeAES128)
+            let operation: CCOperation = UInt32(kCCDecrypt)
+            let algoritm:  CCAlgorithm = UInt32(kCCAlgorithmAES128)
+            let options:   CCOptions   = UInt32(options)
+
+            var numBytesEncrypted :size_t = 0
+
+            let cryptStatus = CCCrypt(operation,
+                                      algoritm,
+                                      options,
+                                      (keyData as NSData).bytes, keyLength,
+                                      iv,
+                                      data.bytes, data.length,
+                                      cryptData.mutableBytes, cryptData.length,
+                                      &numBytesEncrypted)
+
+            if UInt32(cryptStatus) == UInt32(kCCSuccess) {
+                cryptData.length = Int(numBytesEncrypted)
+                let unencryptedMessage = String(data: cryptData as Data, encoding:String.Encoding.utf8)
+                return unencryptedMessage
+            }
+            else {
+                return nil
+            }
+        }
+        return nil
+    }
+
+
+}
