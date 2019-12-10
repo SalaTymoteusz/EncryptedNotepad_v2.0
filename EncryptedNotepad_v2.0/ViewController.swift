@@ -10,6 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 import AVFoundation
 import CommonCrypto
+import LocalAuthentication
 
 
 
@@ -55,6 +56,23 @@ class ViewController: UIViewController {
     
     // infoLabel is label above dots, showing actual informations for user
     @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBAction func authenticationWithTouchID(_ sender: Any) {
+        let context: LAContext = LAContext()
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Put your finger", reply: {(wasCorrect, error) in
+                if wasCorrect {
+                    DispatchQueue.main.async {
+                        self.navigatedToNote()
+                    }
+                } else {
+                    UIDevice.vibrate()
+                }
+            })
+        } else {
+            // place for device allert
+        }
+    }
     
     
     // function set up view of dots
@@ -117,6 +135,7 @@ class ViewController: UIViewController {
         counterOfWrongAnswer = loadCounterValue()
         
         
+        
         // After run, check if the user has blocked the application after too many incorrectly entered codes
         if compareDates(delayDate: delayDate) == false {
             infoLabel.text = "Wait till: \(dateToString(date: delayDate))"
@@ -134,7 +153,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     
     func clearInputKeycodeView() {
         self.inputKeycode = []

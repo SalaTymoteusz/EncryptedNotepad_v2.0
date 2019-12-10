@@ -10,7 +10,7 @@
         <!--Passcode-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="codeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="EncryptedNotepad_v2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="codeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="CryptoNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,12 +71,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWo-GB-Wg4">
+                                <rect key="frame" x="155" y="763" width="104" height="74"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="CQD-bD-cdL"/>
+                                </constraints>
+                                <state key="normal" title="Encrypt Data" image="fingerprint">
+                                    <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="authenticationWithTouchID:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fuN-js-BxW"/>
+                                    <action selector="logoutTapped:" destination="ycb-Tf-kGC" eventType="touchUpInside" id="POx-ux-hnV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PWo-GB-Wg4" firstAttribute="leading" secondItem="lsv-Nx-wik" secondAttribute="leading" id="1Ly-5k-iwb"/>
                             <constraint firstItem="His-aO-u92" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="40" id="8dE-Zc-rkX"/>
+                            <constraint firstItem="PWo-GB-Wg4" firstAttribute="trailing" secondItem="lsv-Nx-wik" secondAttribute="trailing" id="BC7-6J-5ap"/>
                             <constraint firstItem="His-aO-u92" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kj8-of-Wwq"/>
                             <constraint firstItem="lsv-Nx-wik" firstAttribute="top" secondItem="5dn-OZ-09T" secondAttribute="bottom" constant="20" id="NTz-CH-teZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PWo-GB-Wg4" secondAttribute="bottom" constant="25" id="OLC-IZ-GgY"/>
                             <constraint firstItem="lsv-Nx-wik" firstAttribute="centerX" secondItem="His-aO-u92" secondAttribute="centerX" id="SlD-A1-XsS"/>
                             <constraint firstItem="His-aO-u92" firstAttribute="top" secondItem="lsv-Nx-wik" secondAttribute="bottom" constant="8" id="bry-oB-8uz"/>
                             <constraint firstItem="5dn-OZ-09T" firstAttribute="centerX" secondItem="lsv-Nx-wik" secondAttribute="centerX" id="mgJ-iz-ViS"/>
@@ -100,7 +117,7 @@
         <!--Note View Controller-->
         <scene sceneID="oyC-GG-Ktw">
             <objects>
-                <viewController storyboardIdentifier="noteView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ycb-Tf-kGC" customClass="NoteViewController" customModule="EncryptedNotepad_v2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noteView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ycb-Tf-kGC" customClass="NoteViewController" customModule="CryptoNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUh-mu-pXb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,4 +187,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fingerprint" width="512" height="512"/>
+    </resources>
 </document>
