@@ -19,8 +19,27 @@
 		A9063E5623623F55005CDEDE /* NumberPadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9063E5423623F55005CDEDE /* NumberPadCollectionViewCell.xib */; };
 		A9063E5923623FC6005CDEDE /* TextPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9063E5723623FC6005CDEDE /* TextPadCollectionViewCell.swift */; };
 		A9063E5A23623FC6005CDEDE /* TextPadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */; };
-		DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
+		A9A97EA92461A107009B8E37 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EA82461A107009B8E37 /* Models.swift */; };
+		A9A97EAD2461A549009B8E37 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EAC2461A549009B8E37 /* DateExtension.swift */; };
+		A9A97EAF2461A723009B8E37 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EAE2461A723009B8E37 /* StringExtension.swift */; };
+		A9A97EB12461ACA5009B8E37 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EB02461ACA5009B8E37 /* Services.swift */; };
+		A9DF328B2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
+		A9DF328C2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A9DF328D2472FCB300E8AFA0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A9DF328C2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		23F4CB7DDC0E7D175B7BAD41 /* Pods-EncryptedNotepad_v2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EncryptedNotepad_v2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-EncryptedNotepad_v2.0/Pods-EncryptedNotepad_v2.0.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +59,10 @@
 		A9063E5423623F55005CDEDE /* NumberPadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberPadCollectionViewCell.xib; sourceTree = "<group>"; };
 		A9063E5723623FC6005CDEDE /* TextPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPadCollectionViewCell.swift; sourceTree = "<group>"; };
 		A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPadCollectionViewCell.xib; sourceTree = "<group>"; };
+		A9A97EA82461A107009B8E37 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A9A97EAC2461A549009B8E37 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		A9A97EAE2461A723009B8E37 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A9A97EB02461ACA5009B8E37 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0144C1A801A63F71C64C54 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */,
+				A9DF328B2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,11 +106,12 @@
 		A9063E3823620386005CDEDE /* EncryptedNotepad_v2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A9063E5223623ECF005CDEDE /* Cell Template */,
 				A9063E3923620386005CDEDE /* AppDelegate.swift */,
 				A9063E3B23620386005CDEDE /* SceneDelegate.swift */,
-				A9063E3D23620386005CDEDE /* ViewController.swift */,
-				A9063E5023620D54005CDEDE /* NoteViewController.swift */,
+				A9A97EB32461ACD8009B8E37 /* Extensions */,
+				A9A97EB22461ACBC009B8E37 /* Controllers */,
+				A9A97EB42461AD0F009B8E37 /* Models */,
+				A9063E5223623ECF005CDEDE /* Cell Template */,
 				A9063E3F23620386005CDEDE /* Main.storyboard */,
 				A9063E4523620387005CDEDE /* Assets.xcassets */,
 				A9063E4723620387005CDEDE /* LaunchScreen.storyboard */,
@@ -106,6 +130,33 @@
 				A9063E5823623FC6005CDEDE /* TextPadCollectionViewCell.xib */,
 			);
 			path = "Cell Template";
+			sourceTree = "<group>";
+		};
+		A9A97EB22461ACBC009B8E37 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9063E3D23620386005CDEDE /* ViewController.swift */,
+				A9063E5023620D54005CDEDE /* NoteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A9A97EB32461ACD8009B8E37 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9A97EAC2461A549009B8E37 /* DateExtension.swift */,
+				A9A97EAE2461A723009B8E37 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A9A97EB42461AD0F009B8E37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9A97EA82461A107009B8E37 /* Models.swift */,
+				A9A97EB02461ACA5009B8E37 /* Services.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F3E4AB353F498FCA758308F1 /* Pods */ = {
@@ -129,6 +180,7 @@
 				A9063E3323620386005CDEDE /* Frameworks */,
 				A9063E3423620386005CDEDE /* Resources */,
 				D412A86890278E7EE5388A7A /* [CP] Embed Pods Frameworks */,
+				A9DF328D2472FCB300E8AFA0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,7 +293,11 @@
 			files = (
 				A9063E3E23620386005CDEDE /* ViewController.swift in Sources */,
 				A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */,
+				A9A97EAF2461A723009B8E37 /* StringExtension.swift in Sources */,
+				A9A97EB12461ACA5009B8E37 /* Services.swift in Sources */,
 				A9063E3A23620386005CDEDE /* AppDelegate.swift in Sources */,
+				A9A97EA92461A107009B8E37 /* Models.swift in Sources */,
+				A9A97EAD2461A549009B8E37 /* DateExtension.swift in Sources */,
 				A9063E5923623FC6005CDEDE /* TextPadCollectionViewCell.swift in Sources */,
 				A9063E5523623F55005CDEDE /* NumberPadCollectionViewCell.swift in Sources */,
 				A9063E5123620D54005CDEDE /* NoteViewController.swift in Sources */,

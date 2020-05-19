@@ -20,12 +20,10 @@ class NumberPadCollectionViewCell: UICollectionViewCell {
         self.keyView.layer.borderColor = UIColor.black.cgColor
         self.keyView.layer.backgroundColor = UIColor.white.cgColor
         self.keyLabel.textColor = UIColor.black
-        
     }
     
     func setupCell(title: String) {
-        
         self.keyLabel.text = title
     }
-
+    
 }
