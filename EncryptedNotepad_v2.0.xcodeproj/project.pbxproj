@@ -23,6 +23,7 @@
 		A9A97EAD2461A549009B8E37 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EAC2461A549009B8E37 /* DateExtension.swift */; };
 		A9A97EAF2461A723009B8E37 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EAE2461A723009B8E37 /* StringExtension.swift */; };
 		A9A97EB12461ACA5009B8E37 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97EB02461ACA5009B8E37 /* Services.swift */; };
+		A9D1F5E524744B8C00FCF0C9 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1F5E424744B8C00FCF0C9 /* Encryptor.swift */; };
 		A9DF328B2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; };
 		A9DF328C2472FCB300E8AFA0 /* Pods_EncryptedNotepad_v2_0.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2AE1DA1F6CC56F5204B96F /* Pods_EncryptedNotepad_v2_0.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		A9A97EAC2461A549009B8E37 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A9A97EAE2461A723009B8E37 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A9A97EB02461ACA5009B8E37 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		A9D1F5E424744B8C00FCF0C9 /* Encryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				A9A97EA82461A107009B8E37 /* Models.swift */,
 				A9A97EB02461ACA5009B8E37 /* Services.swift */,
+				A9D1F5E424744B8C00FCF0C9 /* Encryptor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				A9063E4423620386005CDEDE /* EncryptedNotepad_v2_0.xcdatamodeld in Sources */,
 				A9A97EAF2461A723009B8E37 /* StringExtension.swift in Sources */,
 				A9A97EB12461ACA5009B8E37 /* Services.swift in Sources */,
+				A9D1F5E524744B8C00FCF0C9 /* Encryptor.swift in Sources */,
 				A9063E3A23620386005CDEDE /* AppDelegate.swift in Sources */,
 				A9A97EA92461A107009B8E37 /* Models.swift in Sources */,
 				A9A97EAD2461A549009B8E37 /* DateExtension.swift in Sources */,
